@@ -1,4 +1,4 @@
-<aura:component controller="jmb.CaseCards" implements="force:appHostable">
+<aura:component controller="CaseCards" implements="force:appHostable">
     <aura:attribute name="idea" type="Idea" default="{'sobjectType': 'Idea'}"/>
     <aura:attribute name="ideas" type="Idea[]"/>
     <aura:attribute name="profilePhotoUrl" type="String"/>
@@ -22,11 +22,11 @@
     
     <!-- To load JS libraries in a particular order, I used the code from
    https://github.com/rajaraodv/loadcomponent -->    
-    <jmb:load 
+    <load 
               filesInParallel="/resource/bootstrapcssmin.sfcss,/resource/animate.sfcss"
               filesInSeries="/resource/isotope.sfjs,/resource/jquerymin.sfjs,/resource/modernizr.sfjs,/resource/timeago.sfjs,/resource/bootstrapjs.sfjs" />
     
-    <aura:handler event="jmb:staticResourcesLoaded" action="{!c.initScripts}"/>    
+    <aura:handler event="staticResourcesLoaded" action="{!c.initScripts}"/>    
     
     <!-- This attribute will hold out JS object that represents our "cards" -->    
     <aura:attribute name="objIsotope" type="Object" />
@@ -99,7 +99,7 @@
                         </div>
                         
                         <!-- The "chart" is the color that is applied to each card background -->
-                        <jmb:VoteChart ideaObject="{!p}"/>
+                        <VoteChart ideaObject="{!p}"/>
                         
                         <!-- Hidden to be used for filtering - could be more elegant, but this is simple -->
                         <p class="votescore" style="display:none">{!p.VoteScore}</p>
@@ -120,8 +120,8 @@
                 <div class="modal-header detail">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">{!v.idea.title}</h4>
-                    <jmb:renderHTML rawHTML="{!v.idea.Body}"/>
-                    <jmb:VoteBox parentIdeaId="{!v.idea.id}"/>  
+                    <renderHTML rawHTML="{!v.idea.Body}"/>
+                    <VoteBox parentIdeaId="{!v.idea.id}"/>  
                     
                 </div>
                 <div class="modal-body comments">
